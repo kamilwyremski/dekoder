@@ -1,0 +1,128 @@
+{"scripts":[
+	{
+        "name" : {
+			"pl" : "NOTICE2",
+			"en" : "NOTICE2"
+		},
+		"title" : {
+			"pl" : "NOTICE2 - skrypt ogłoszeń",
+			"en" : "NOTICE2 - script of announcements"
+		},
+		"url" : {
+			"pl" : "notice2",
+			"en" : "notice2"
+		},
+		"image" : "upload/scripts/notice2/notice2.jpg",
+		"description" : {
+			"pl" : "NOTICE2 to nowoczesny skrypt pozwalający stworzyć stronę z ogłoszeniami online",
+			"en" : "NOTICE2 is a modern script that allows you to create website with ads"
+		},
+		"favicon" : "upload/scripts/notice2/favicon.png",
+		"date_update" : "2017-05-01"
+    },
+	{
+        "name" : {
+			"pl" : "FESTA",
+			"en" : "FESTA"
+		},
+		"title" : {
+			"pl" : "FESTA - skrypt bazy noclegowej",
+			"en" : "FESTA - script of accommodation base"
+		},
+		"url" : {
+			"pl" : "festa",
+			"en" : "festa"
+		},
+		"image" : "upload/scripts/festa/festa.jpg",
+		"description" : {
+			"pl" : "Festa to nowoczesny skrypt umożliwiający stworzenie strony www z bazą miejsc noclegowych",
+			"en" : "Festa is a modern script that allows you to create a website with a base of accommodation"
+		},
+		"favicon" : "upload/scripts/festa/favicon.png",
+		"date_update" : "2017-02-01"
+    },	
+	{
+        "name" : {
+			"pl" : "HOLMES",
+			"en" : "HOLMES"
+		},
+		"title" : {
+			"pl" : "HOLMES - skrypt bazy nieruchomości",
+			"en" : "HOLMES - script or real estate"
+		},
+		"url" : {
+			"pl" : "holmes",
+			"en" : "holmes"
+		},
+		"image" : "upload/scripts/holmes/holmes.jpg",
+		"description" : {
+			"pl" : "Holmes to skrypt stron internetowych z ofertą nieruchomości, dla osób prywatnych lub agencji real estate",
+			"en" : "Real estate website for small or big real estate agencies"
+		},
+		"favicon" : "upload/scripts/holmes/favicon.png",
+		"date_update" : "2017-03-01"
+    },
+	{
+        "name" : {
+			"pl" : "EMPRESA",
+			"en" : "EMPRESA"
+		},
+		"title" : {
+			"pl" : "EMPRESA - skrypt katalogu firm",
+			"en" : "EMPRESA - script with list of companies"
+		},
+		"url" : {
+			"pl" : "empresa",
+			"en" : "empresa"
+		},
+		"image" : "upload/scripts/empresa/empresa.jpg",
+		"description" : {
+			"pl" : "Empresa to skrypt dla katalogów firm online - umożliwia stworzenie strony z listą firm lokalnych, krajowych lub międzynarodowych",
+			"en" : "Empresa is a script for online business directories - allows you to create website with a list of local, national or international companies"
+		},
+		"favicon" : "upload/scripts/empresa/favicon.png",
+		"date_update" : "2017-04-01"
+    },
+    {
+        "name" : {
+			"pl" : "NOTICE",
+			"en" : "NOTICE"
+		},
+		"title" : {
+			"pl" : "NOTICE - skrypt ogłoszeniowy",
+			"en" : "NOTICE - script of announcements"
+		},
+		"url" : {
+			"pl" : "notice",
+			"en" : "notice"
+		},
+		"image" : "upload/scripts/notice/notice.jpg",
+		"description" : {
+			"pl" : "Skrypt NOTICE umożliwia stworzenie swojej własnej strony z ogłoszeniami internetowymi",
+			"en" : "Create your own website with announcements"
+		},
+		"favicon" : "upload/scripts/notice/favicon.ico",
+		"date_update" : "2017-01-01"
+    },
+	{
+        "name" : {
+			"pl" : "DEMOTY",
+			"en" : "DEMOTIVATORS"
+		},
+		"title" : {
+			"pl" : "DEMOTY - skrypt typu demotywatory",
+			"en" : "DEMOTIVATORS script"
+		},
+		"url" : {
+			"pl" : "demoty",
+			"en" : "demotivators"
+		},
+		"image" : "upload/scripts/demoty/demoty.jpg",
+		"description" : {
+			"pl" : "Skrypt, dzięki któremu stworzysz stronę www z demotywatorami, memami lub po prostu śmiesznymi obrazkami",
+			"en" : "Create popular website with demotivators, memes or other images"
+		},
+		"favicon" : "upload/scripts/demoty/favicon.ico",
+		"date_update" : "2016-12-01"
+    }
+]}
