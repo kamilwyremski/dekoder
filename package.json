@@ -1,7 +1,7 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "multi-koder-dekoder",
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
     "bootstrap": "^4.0.0",
     "react": "^16.2.0",

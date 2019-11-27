@@ -13,7 +13,6 @@ class App extends Component {
       input_losowe_haslo_typ: 'all',
       input_losowe_haslo_dlugosc: 8,
       input_base64: '',
-      input_base64: '',
       input_md5: '',
       input_sha1: '',
       input_ascii: '',
@@ -29,7 +28,7 @@ class App extends Component {
   }
   randomString(length, type='') {
     var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if(type=='all'){
+    if(type==='all'){
       chars += '!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
     }
     var result = '';
@@ -193,7 +192,12 @@ class App extends Component {
         <input type="text" name="input_xor_klucz" className="form-control" maxLength="3" value={this.state.input_xor_klucz} onChange={this.handleChange} /><br />
         <input type="button" className="btn btn-primary" value="Koduj / Dekoduj" onClick={this.xor} />
 
-        <br /><br /><br /><br />
+        <br /><br />
+
+        <footer className="text-center">
+          <p className="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2017 by <a href="http://wyremski.pl" title="Tworzenie Stron Internetowych">Kamil Wyremski</a></p>
+        </footer>
+    
       </div>
     );
   }

@@ -34,7 +34,7 @@ function encode64(input) {
 
 function decode64(input) {
    var output = ""; var chr1, chr2, chr3; var enc1, enc2, enc3, enc4; var i = 0;
-   input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+   input = input.replace(/[^A-Za-z0-9+/=]/g, "");
    do {
       enc1 = keyStr.indexOf(input.charAt(i++));
       enc2 = keyStr.indexOf(input.charAt(i++));
@@ -47,10 +47,10 @@ function decode64(input) {
 
       output = output + String.fromCharCode(chr1);
 
-      if (enc3 != 64) {
+      if (enc3 !== 64) {
 	 output = output + String.fromCharCode(chr2);
       }
-      if (enc4 != 64) {
+      if (enc4 !== 64) {
 	 output = output + String.fromCharCode(chr3);
       }
    } while (i < input.length);
@@ -61,12 +61,12 @@ function MakeKeyedAlphabet(key, alphabet)
 {
    var out = "";
 
-   if (typeof(alphabet) != 'string')
+   if (typeof(alphabet) !== 'string')
       alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    else
       alphabet = alphabet.toUpperCase();
 
-   if (typeof(key) != 'string')
+   if (typeof(key) !== 'string')
       return alphabet;
 
    key = key.toUpperCase() + alphabet;
@@ -87,7 +87,7 @@ function Caesar(encdec, text, inc, key, alphabet)
 {
    var s = "", b, i, idx;
 
-   if (typeof(alphabet) != 'string')
+   if (typeof(alphabet) !== 'string')
       alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
    inc = inc * 1;
@@ -125,7 +125,7 @@ function atbash(co){
 	co=co.toLowerCase();
  for (var iq=0; iq<co.length; iq++){
   lit=co.substring(iq,iq+1);
-  if (lit!=' '){
+  if (lit!==' '){
   nr=alfabet.indexOf(lit)+1;
   zq=26-nr;
   kodx+=alfabet.substring(zq,zq+1);
