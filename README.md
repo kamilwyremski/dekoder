@@ -1,3 +1,11 @@
 Projekt stworzony w ramach nauki React
 
-Wersja lite pod adresem: https://dekoder.wyremski.pl/
+Wersja live pod adresem: https://dekoder.wyremski.pl/
+
+Uruchomienie:
+
+npm install
+
+npm start
+
+npm run build
