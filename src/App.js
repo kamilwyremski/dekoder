@@ -5,12 +5,13 @@ import { encode64, decode64, toAscii, Caesar, hexdecode, atbash, xorek } from '.
 import { hex_md5 } from './resources/js/md5';
 import { hex_sha1 } from './resources/js/sha1';
 
+
 class App extends Component {
   constructor(props) {
     super();
     this.state = {
       input_losowe_haslo: '',
-      input_losowe_haslo_typ: 'all',
+      input_losowe_haslo_typ: 'alfa',
       input_losowe_haslo_dlugosc: 8,
       input_base64: '',
       input_md5: '',
@@ -22,7 +23,8 @@ class App extends Component {
       input_hex: '',
       input_atbash: '',
       input_xor: '',
-      input_xor_klucz: 6
+      input_xor_klucz: 6,
+      alertCopyToClipboard: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -104,16 +106,48 @@ class App extends Component {
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
+
+  copyPassToClip = () => {
+    this.setState({
+      alertCopyToClipboard: true
+    })
+    setTimeout(() => {
+      this.setState({
+        alertCopyToClipboard: false
+      })
+    }, 1500);
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.state.input_losowe_haslo;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
   render() {
     return (
       <div className="container">
         <div className="text-center">
           <h1>Multi Koder-Dekoder</h1>
-          <p>Jest to kopia strony <a href="https://uw-team.org/dekoder.html">https://uw-team.org/dekoder.html</a> stworzona w celu nauki React</p>
+          <p className="mb-1">Jest to kopia strony <a href="https://uw-team.org/dekoder.html">https://uw-team.org/dekoder.html</a> stworzona w celu nauki React</p>
+          <p>Kod strony możesz pobrać z <a href="https://github.com/kamilwyremski/dekoder">https://github.com/kamilwyremski/dekoder</a></p>
         </div>
 
         <h3>Losowe hasło</h3>
-        <input type="text" name="input_losowe_haslo" className="form-control" value={this.state.input_losowe_haslo} onChange={this.handleChange} />
+        <div className="input-group">
+          <input type="text" name="input_losowe_haslo" className="form-control" value={this.state.input_losowe_haslo} onChange={this.handleChange} />
+          <div className="input-group-append">
+            <button className="btn btn-success" type="button" onClick={this.copyPassToClip} >Kopiuj</button>
+          </div>
+        </div>
+
+        {this.state.alertCopyToClipboard && <div className="alert alert-success fade in show" id="alert_copy_to_clipboard">Pomyślnie skopiowano do schowka</div>}
+
         <label>Typ</label>
         <select name="input_losowe_haslo_typ" value={this.state.input_losowe_haslo_typ} onChange={this.handleChange} className="form-control">
           <option value="alfa">Tylko alfanumeryczne</option>
