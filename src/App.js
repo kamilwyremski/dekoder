@@ -24,7 +24,7 @@ class App extends Component {
       input_atbash: '',
       input_xor: '',
       input_xor_klucz: 6,
-      alertCopyToClipboard: false
+      alertCopyToClipboard: ''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -41,66 +41,79 @@ class App extends Component {
     this.setState({
       input_losowe_haslo: this.randomString(this.state.input_losowe_haslo_dlugosc, this.state.input_losowe_haslo_typ)
     })
+    document.activeElement.blur()
   }
   encode64 = () => {
     this.setState({
       input_base64: encode64(this.state.input_base64)
     })
+    document.activeElement.blur()
   }
   decode64 = () => {
     this.setState({
       input_base64: decode64(this.state.input_base64)
     })
+    document.activeElement.blur()
   }
   clearBase64 = () => {
     this.setState({
       input_base64: ''
     })
+    document.activeElement.blur()
   }
   hex_md5 = () => {
     this.setState({
       input_md5: hex_md5(this.state.input_md5)
     })
+    document.activeElement.blur()
   }
   hex_sha1 = () => {
     this.setState({
       input_sha1: hex_sha1(this.state.input_sha1)
     })
+    document.activeElement.blur()
   }
   toAscii = () => {
     this.setState({
       input_ascii: toAscii(this.state.input_ascii)
     })
+    document.activeElement.blur()
   }
   toRot = () => {
     this.setState({
       input_rot: Caesar(1,this.state.input_rot,this.state.input_rot_przesuniecie)
     })
+    document.activeElement.blur()
   }
   fromRot = () => {
     this.setState({
       input_rot: Caesar(-1,this.state.input_rot,this.state.input_rot_przesuniecie)
     })
+    document.activeElement.blur()
   }
   urldecode = () => {
     this.setState({
       input_urldecode: decodeURI(this.state.input_urldecode)
     })
+    document.activeElement.blur()
   }
   hexCode = () => {
     this.setState({
       input_hex: hexdecode(this.state.input_hex)
     })
+    document.activeElement.blur()
   }
   atbash = () => {
     this.setState({
       input_atbash: atbash(this.state.input_atbash)
     })
+    document.activeElement.blur()
   }
   xor = () => {
     this.setState({
       input_xor: xorek(this.state.input_xor, this.state.input_xor_klucz)
     })
+    document.activeElement.blur()
   }
 
   handleChange(event) {
@@ -108,25 +121,34 @@ class App extends Component {
   }
 
   copyPassToClip = () => {
-    this.setState({
-      alertCopyToClipboard: true
-    })
+    if(this.state.input_losowe_haslo){
+      this.setState({
+        alertCopyToClipboard: 'Pomyślnie skopiowano do schowka'
+      })
+      let selBox = document.createElement('textarea');
+      selBox.style.position = 'fixed';
+      selBox.style.left = '0';
+      selBox.style.top = '0';
+      selBox.style.opacity = '0';
+      selBox.value = this.state.input_losowe_haslo;
+      document.body.appendChild(selBox);
+      selBox.focus();
+      selBox.select();
+      document.execCommand('copy');
+      document.body.removeChild(selBox);
+    }else{
+      this.setState({
+        alertCopyToClipboard: 'Hasło jest puste!'
+      })
+    }
+    document.activeElement.blur()
+    
     setTimeout(() => {
       this.setState({
         alertCopyToClipboard: false
       })
     }, 1500);
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = this.state.input_losowe_haslo;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
+   
   }
 
   render() {
@@ -146,7 +168,7 @@ class App extends Component {
           </div>
         </div>
 
-        {this.state.alertCopyToClipboard && <div className="alert alert-success fade in show" id="alert_copy_to_clipboard">Pomyślnie skopiowano do schowka</div>}
+        {this.state.alertCopyToClipboard && <div className="alert alert-success fade in show" id="alert_copy_to_clipboard">{this.state.alertCopyToClipboard}</div>}
 
         <label>Typ</label>
         <select name="input_losowe_haslo_typ" value={this.state.input_losowe_haslo_typ} onChange={this.handleChange} className="form-control">
