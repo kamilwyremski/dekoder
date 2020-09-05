@@ -251,7 +251,7 @@ class App extends Component {
         <br /><br />
 
         <footer className="text-center">
-          <p className="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2017 by <a href="http://wyremski.pl" title="Tworzenie Stron Internetowych">Kamil Wyremski</a></p>
+          <p className="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2017 - 2020 by <a href="https://wyremski.pl" title="Full Stack Web Developer">Kamil Wyremski</a></p>
         </footer>
     
       </div>
