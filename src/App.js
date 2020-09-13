@@ -5,7 +5,6 @@ import { encode64, decode64, toAscii, Caesar, hexdecode, atbash, xorek } from '.
 import { hex_md5 } from './resources/js/md5';
 import { hex_sha1 } from './resources/js/sha1';
 
-
 class App extends Component {
   constructor(props) {
     super();
