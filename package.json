@@ -2,6 +2,17 @@
   "name": "multi-koder-dekoder",
   "version": "1.2.0",
   "private": false,
+  "description": "Multi Koder-Dekoder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamilwyremski/dekoder"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Kamil Wyremski",
+    "email": "kamil@wyremski.pl",
+    "url": "https://wyremski.pl/en"
+  },
   "dependencies": {
     "bootstrap": "^4.5.2",
     "react": "^16.13.1",
