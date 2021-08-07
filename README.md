@@ -8,5 +8,7 @@ npm install
 
 npm start
 
+npm run test
+
 npm run build
 ```

@@ -4,6 +4,8 @@ import ReactTestUtils from 'react-dom/test-utils';
 
 import App from './App';
 
+const bcrypt = require("bcryptjs");
+
 let container;
 
 beforeEach(() => {
@@ -29,6 +31,21 @@ it('sprawdź losowe hasło', () => {
   ReactTestUtils.Simulate.change(inputDlugosc);
   ReactTestUtils.Simulate.click(button);
   expect(input.value.length).toBe(10);
+});
+
+it('sprawdź bcrypt', () => {
+  const input = container.querySelector('[name=input_bcrypt]');
+  const button = container.querySelector('#button_to_bcrypt');
+
+  expect(input.value).toBe('');
+
+  input.value = '1234';
+  ReactTestUtils.Simulate.change(input);
+  ReactTestUtils.Simulate.click(button);
+
+  const result = bcrypt.compareSync("1234", input.value);
+
+  expect(result).toBe(true);
 });
 
 it('sprawdź base64', () => {

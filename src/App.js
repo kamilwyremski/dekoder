@@ -5,6 +5,8 @@ import { encode64, decode64, toAscii, Caesar, hexdecode, atbash, xorek } from '.
 import { hex_md5 } from './resources/js/md5';
 import { hex_sha1 } from './resources/js/sha1';
 
+const bcrypt = require("bcryptjs");
+
 class App extends Component {
   constructor(props) {
     super();
@@ -12,6 +14,7 @@ class App extends Component {
       input_losowe_haslo: '',
       input_losowe_haslo_typ: 'alfa',
       input_losowe_haslo_dlugosc: 8,
+      input_bcrypt: '',
       input_base64: '',
       input_md5: '',
       input_sha1: '',
@@ -41,6 +44,11 @@ class App extends Component {
       input_losowe_haslo: this.randomString(this.state.input_losowe_haslo_dlugosc, this.state.input_losowe_haslo_typ)
     })
     document.activeElement.blur()
+  }
+  to_bcrypt = () => {
+    this.setState({
+      input_bcrypt: bcrypt.hashSync(this.state.input_bcrypt, 5)
+    })
   }
   encode64 = () => {
     this.setState({
@@ -180,12 +188,18 @@ class App extends Component {
 
         <br /><br />
 
+        <h3>Bcrypt</h3>
+        <input name="input_bcrypt" className="form-control" value={this.state.input_bcrypt} onChange={this.handleChange} /><br />
+        <input type="button" className="btn btn-primary" value="Zakoduj Bcrypt" onClick={this.to_bcrypt} id="button_to_bcrypt" />
+
+        <br /><br />
+
         <h3>Base64</h3>
         <p>Przyklad kodu: YWxhIG1hIGtvdGE=</p>
         <textarea name="input_base64" className="form-control" value={this.state.input_base64} onChange={this.handleChange}></textarea><br />
-        <input type="button" className="btn btn-primary" value="Zakoduj Base64" id="button_zakoduj_base64" onClick={this.encode64} />
-        <input type="button" className="btn btn-secondary" value="Dekoduj Base64" id="button_dekoduj_base64" onClick={this.decode64} />
-        <input type="button" className="btn btn-warning" value="Wyczyść" id="button_wyczysc_base64" onClick={this.clearBase64} />
+        <input type="button" className="btn btn-primary mb-1" value="Zakoduj Base64" id="button_zakoduj_base64" onClick={this.encode64} />
+        <input type="button" className="btn btn-secondary mb-1" value="Dekoduj Base64" id="button_dekoduj_base64" onClick={this.decode64} />
+        <input type="button" className="btn btn-warning mb-1" value="Wyczyść" id="button_wyczysc_base64" onClick={this.clearBase64} />
 
         <br /><br />
 
@@ -214,8 +228,8 @@ class App extends Component {
         <p>	Przyklad kodu: gb wrfg wnxvf grxfg (rot13)</p>
         <textarea name="input_rot" className="form-control" value={this.state.input_rot} onChange={this.handleChange}></textarea>
         przesunięcie <input type="number" name="input_rot_przesuniecie" className="form-control" value={this.state.input_rot_przesuniecie} onChange={this.handleChange} /><br />
-        <input type="button" className="btn btn-primary" value="Zakoduj" id="button_zakoduj_rot" onClick={this.toRot} />
-        <input type="button" className="btn btn-secondary" value="Zdekoduj" id="button_zdekoduj_rot" onClick={this.fromRot} />
+        <input type="button" className="btn btn-primary mb-1" value="Zakoduj" id="button_zakoduj_rot" onClick={this.toRot} />
+        <input type="button" className="btn btn-secondary mb-1" value="Zdekoduj" id="button_zdekoduj_rot" onClick={this.fromRot} />
 
         <br /><br />
 
