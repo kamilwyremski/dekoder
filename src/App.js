@@ -12,7 +12,7 @@ class App extends Component {
     super();
     this.state = {
       input_losowe_haslo: '',
-      input_losowe_haslo_typ: 'alfa',
+      input_losowe_haslo_typ: 'alpha',
       input_losowe_haslo_dlugosc: 8,
       input_bcrypt: '',
       input_base64: '',
@@ -30,13 +30,16 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-  randomString(length, type='') {
-    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  randomString(length, type) {
+    let chars = '0123456789';
+    if(type==='all' || type==='alpha'){
+      chars += 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    }
     if(type==='all'){
       chars += '!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
     }
-    var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    let result = '';
+    for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
   }
   losowe_haslo = () => {
@@ -129,20 +132,10 @@ class App extends Component {
 
   copyPassToClip = () => {
     if(this.state.input_losowe_haslo){
+      navigator.clipboard.writeText(this.state.input_losowe_haslo)
       this.setState({
         alertCopyToClipboard: 'Pomyślnie skopiowano do schowka'
       })
-      let selBox = document.createElement('textarea');
-      selBox.style.position = 'fixed';
-      selBox.style.left = '0';
-      selBox.style.top = '0';
-      selBox.style.opacity = '0';
-      selBox.value = this.state.input_losowe_haslo;
-      document.body.appendChild(selBox);
-      selBox.focus();
-      selBox.select();
-      document.execCommand('copy');
-      document.body.removeChild(selBox);
     }else{
       this.setState({
         alertCopyToClipboard: 'Hasło jest puste!'
@@ -155,7 +148,6 @@ class App extends Component {
         alertCopyToClipboard: false
       })
     }, 1500);
-   
   }
 
   render() {
@@ -163,8 +155,8 @@ class App extends Component {
       <div className="container">
         <div className="text-center">
           <h1>Multi Koder-Dekoder</h1>
-          <p className="mb-1">Jest to kopia strony <a href="https://uw-team.org/dekoder.html">https://uw-team.org/dekoder.html</a> stworzona w celu nauki React</p>
-          <p>Kod strony możesz pobrać z <a href="https://github.com/kamilwyremski/dekoder">https://github.com/kamilwyremski/dekoder</a></p>
+          <p className="mb-1">Jest to kopia strony <a href="https://uw-team.org/dekoder.html" rel="nofollow noreferrer" title="Dekoder">https://uw-team.org/dekoder.html</a> stworzona w celu nauki React</p>
+          <p>Kod strony możesz pobrać z <a href="https://github.com/kamilwyremski/dekoder" title="Dekoder - kod strony na Github">https://github.com/kamilwyremski/dekoder</a></p>
         </div>
 
         <h3>Losowe hasło</h3>
@@ -179,7 +171,8 @@ class App extends Component {
 
         <label>Typ</label>
         <select name="input_losowe_haslo_typ" value={this.state.input_losowe_haslo_typ} onChange={this.handleChange} className="form-control">
-          <option value="alfa">Tylko alfanumeryczne</option>
+          <option value="alpha">Tylko alfanumeryczne</option>
+          <option value="digits">Tylko cyfry</option>
           <option value="all">Wszystkie znaki</option>
         </select>
         <label>Długość hasła</label>
