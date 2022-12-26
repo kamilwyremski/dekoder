@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       input_losowe_haslo: '',
       input_losowe_haslo_typ: 'alpha',
-      input_losowe_haslo_dlugosc: 8,
+      input_losowe_haslo_dlugosc: 16,
       input_bcrypt: '',
       input_base64: '',
       input_md5: '',
@@ -283,7 +283,7 @@ class App extends Component {
         <input type="button" className="btn btn-primary" value="Koduj / Dekoduj" id="button_xor" onClick={this.xor} />
 
         <footer className="mt-5 text-center">
-          <p className="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2017 - 2021 by <a href="https://wyremski.pl" title="Full Stack Web Developer">Kamil Wyremski</a></p>
+          <p className="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2017 - 2023 by <a href="https://wyremski.pl" title="Full Stack Web Developer">Kamil Wyremski</a></p>
         </footer>
     
       </div>
