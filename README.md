@@ -1,6 +1,6 @@
 Projekt stworzony w ramach nauki React
 
-Wersja live pod adresem: https://dekoder.wyremski.pl/
+Wersja online pod adresem: https://dekoder.wyremski.pl/
 
 Uruchomienie:
 ```
