@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
-
+import { bcrypt } from "bcrypt";
 import {
   encode64,
   decode64,
@@ -12,8 +11,8 @@ import {
 } from "./resources/js/engine";
 import { hex_md5 } from "./resources/js/md5";
 import { hex_sha1 } from "./resources/js/sha1";
+import "./App.css";
 
-const bcrypt = require("bcryptjs");
 
 class App extends Component {
   constructor(props) {
@@ -61,9 +60,12 @@ class App extends Component {
     document.activeElement.blur();
   };
   to_bcrypt = () => {
-    this.setState({
-      input_bcrypt: bcrypt.hashSync(this.state.input_bcrypt, 5),
-    });
+    bcrypt
+      .hash(this.state.input_bcrypt, 5)
+      .then(hash => {
+        console.log('Hash ', hash)
+      })
+      .catch(err => console.error(err.message))
   };
   encode64 = () => {
     this.setState({
