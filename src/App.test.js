@@ -22,7 +22,7 @@ it('sprawdź losowe hasło', () => {
   const inputDlugosc = container.querySelector('[name=input_losowe_haslo_dlugosc]');
   const button = container.querySelector('#button_losowe_haslo');
 
-  expect(input.value).toBe('');
+  expect(input.value).not.toBe('');
 
   ReactTestUtils.Simulate.click(button);
   expect(input.value.length).toBe(parseInt(inputDlugosc.value));

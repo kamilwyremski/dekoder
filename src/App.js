@@ -14,7 +14,8 @@ import "./App.css";
 const bcrypt = require("bcryptjs");
 
 class App extends Component {
-  constructor(props) {
+  alertCopyToClipboardTimeout;
+  constructor() {
     super();
     this.state = {
       input_losowe_haslo: "",
@@ -35,6 +36,9 @@ class App extends Component {
       alertCopyToClipboard: "",
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+  componentDidMount() {
+    this.losowe_haslo();
   }
   randomString(length, type) {
     let chars = "0123456789";
@@ -161,7 +165,8 @@ class App extends Component {
     }
     document.activeElement.blur();
 
-    setTimeout(() => {
+    clearTimeout(this.alertCopyToClipboardTimeout)
+    this.alertCopyToClipboardTimeout = setTimeout(() => {
       this.setState({
         alertCopyToClipboard: false,
       });
@@ -202,7 +207,6 @@ class App extends Component {
             value={this.state.input_losowe_haslo}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -212,7 +216,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
 
         <label>Typ</label>
@@ -252,7 +255,6 @@ class App extends Component {
             value={this.state.input_bcrypt}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -260,7 +262,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
 
         <input
@@ -279,7 +280,6 @@ class App extends Component {
             value={this.state.input_base64}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -287,7 +287,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -320,7 +319,6 @@ class App extends Component {
             value={this.state.input_md5}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -328,7 +326,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -347,7 +344,6 @@ class App extends Component {
             value={this.state.input_sha1}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -355,7 +351,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -375,7 +370,6 @@ class App extends Component {
             onChange={this.handleChange}
             id="input_ascii"
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -383,7 +377,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -401,7 +394,6 @@ class App extends Component {
             value={this.state.input_rot}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -409,7 +401,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <label className="w-100 mb-2">
           przesunięcie{" "}
@@ -444,7 +435,6 @@ class App extends Component {
             value={this.state.input_urldecode}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -452,7 +442,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -470,7 +459,6 @@ class App extends Component {
             value={this.state.input_hex}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -478,7 +466,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -496,7 +483,6 @@ class App extends Component {
             value={this.state.input_atbash}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -504,7 +490,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <input
           type="button"
@@ -522,7 +507,6 @@ class App extends Component {
             value={this.state.input_xor}
             onChange={this.handleChange}
           />
-          <div className="input-group-append">
             <button
               className="btn btn-success"
               type="button"
@@ -530,7 +514,6 @@ class App extends Component {
             >
               Kopiuj
             </button>
-          </div>
         </div>
         <p>Klucz (liczba lub cyfra!):</p>
         <input

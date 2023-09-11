@@ -1,4 +1,6 @@
-Projekt stworzony w ramach nauki React
+#Dekoder
+
+Skrypt do generowania losowych haseł wraz z koderem / dekoderem haseł.
 
 Wersja online pod adresem: https://dekoder.wyremski.pl/
 
