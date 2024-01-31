@@ -123,6 +123,12 @@ class App extends Component {
     });
     document.activeElement.blur();
   };
+  urlencode = () => {
+    this.setState({
+      input_urldecode: encodeURI(this.state.input_urldecode),
+    });
+    document.activeElement.blur();
+  };
   urldecode = () => {
     this.setState({
       input_urldecode: decodeURI(this.state.input_urldecode),
@@ -165,7 +171,7 @@ class App extends Component {
     }
     document.activeElement.blur();
 
-    clearTimeout(this.alertCopyToClipboardTimeout)
+    clearTimeout(this.alertCopyToClipboardTimeout);
     this.alertCopyToClipboardTimeout = setTimeout(() => {
       this.setState({
         alertCopyToClipboard: false,
@@ -207,15 +213,13 @@ class App extends Component {
             value={this.state.input_losowe_haslo}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() =>
-                this.copyToClipboard(this.state.input_losowe_haslo)
-              }
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_losowe_haslo)}
+          >
+            Kopiuj
+          </button>
         </div>
 
         <label>Typ</label>
@@ -255,21 +259,51 @@ class App extends Component {
             value={this.state.input_bcrypt}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_bcrypt)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_bcrypt)}
+          >
+            Kopiuj
+          </button>
         </div>
-
         <input
           type="button"
           className="btn btn-primary"
           value="Zakoduj Bcrypt"
           onClick={this.to_bcrypt}
           id="button_to_bcrypt"
+        />
+
+        <h3 className="mt-4">UrlEncode i UrlDecode</h3>
+        <div className="input-group mb-2">
+          <input
+            name="input_urldecode"
+            className="form-control"
+            value={this.state.input_urldecode}
+            onChange={this.handleChange}
+          />
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_urldecode)}
+          >
+            Kopiuj
+          </button>
+        </div>
+        <input
+          type="button"
+          className="btn btn-primary"
+          value="Encode"
+          id="button_urlencode"
+          onClick={this.urlencode}
+        />
+        <input
+          type="button"
+          className="btn btn-primary"
+          value="Dekode"
+          id="button_urldecode"
+          onClick={this.urldecode}
         />
 
         <h3 className="mt-4">Base64</h3>
@@ -280,13 +314,13 @@ class App extends Component {
             value={this.state.input_base64}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_base64)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_base64)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -319,13 +353,13 @@ class App extends Component {
             value={this.state.input_md5}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_md5)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_md5)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -344,13 +378,13 @@ class App extends Component {
             value={this.state.input_sha1}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_sha1)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_sha1)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -370,13 +404,13 @@ class App extends Component {
             onChange={this.handleChange}
             id="input_ascii"
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_ascii)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_ascii)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -394,13 +428,13 @@ class App extends Component {
             value={this.state.input_rot}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_rot)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_rot)}
+          >
+            Kopiuj
+          </button>
         </div>
         <label className="w-100 mb-2">
           przesunięcie{" "}
@@ -427,30 +461,6 @@ class App extends Component {
           onClick={this.fromRot}
         />
 
-        <h3 className="mt-4">URLDECODE</h3>
-        <div className="input-group mb-2">
-          <input
-            name="input_urldecode"
-            className="form-control"
-            value={this.state.input_urldecode}
-            onChange={this.handleChange}
-          />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_urldecode)}
-            >
-              Kopiuj
-            </button>
-        </div>
-        <input
-          type="button"
-          className="btn btn-primary"
-          value="Zdekoduj"
-          id="button_urldecode"
-          onClick={this.urldecode}
-        />
-
         <h3 className="mt-4">Hex Code</h3>
         <div className="input-group mb-2">
           <input
@@ -459,13 +469,13 @@ class App extends Component {
             value={this.state.input_hex}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_hex)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_hex)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -483,13 +493,13 @@ class App extends Component {
             value={this.state.input_atbash}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_atbash)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_atbash)}
+          >
+            Kopiuj
+          </button>
         </div>
         <input
           type="button"
@@ -507,13 +517,13 @@ class App extends Component {
             value={this.state.input_xor}
             onChange={this.handleChange}
           />
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={() => this.copyToClipboard(this.state.input_xor)}
-            >
-              Kopiuj
-            </button>
+          <button
+            className="btn btn-success"
+            type="button"
+            onClick={() => this.copyToClipboard(this.state.input_xor)}
+          >
+            Kopiuj
+          </button>
         </div>
         <p>Klucz (liczba lub cyfra!):</p>
         <input
@@ -541,7 +551,7 @@ class App extends Component {
             >
               Polityka prywatności
             </a>{" "}
-            | Project 2017 - 2023 by{" "}
+            | Project 2017 - 2024 by{" "}
             <a href="https://wyremski.pl" title="Full Stack Web Developer">
               Kamil Wyremski
             </a>
