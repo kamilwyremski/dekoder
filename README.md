@@ -9,9 +9,7 @@ Uruchomienie:
 ```
 npm install
 
-npm start
-
-npm run test
+npm run dev
 
 npm run build
 ```
