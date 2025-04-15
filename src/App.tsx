@@ -7,9 +7,9 @@ import {
   hexdecode,
   atbash,
   xorek,
-} from "./resources/js/engine";
-import { hex_md5 } from "./resources/js/md5";
-import { hex_sha1 } from "./resources/js/sha1";
+} from "./resources/js/engine.js";
+import { hex_md5 } from "./resources/js/md5.js";
+import { hex_sha1 } from "./resources/js/sha1.js";
 import "./App.css";
 import bcrypt from "bcryptjs";
 
@@ -90,7 +90,7 @@ const App = () => {
   };
 
   const encodeActions = {
-    to_bcrypt: () => setState((p) => ({ ...p, input_bcrypt: bcrypt.hashSync(p.input_bcrypt, 5) })),
+    to_bcrypt: () => setState((p) => ({ ...p, input_bcrypt: bcrypt.hashSync(p.input_bcrypt, 10) })),
     encode64: () => setState((p) => ({ ...p, input_base64: encode64(p.input_base64) })),
     decode64: () => setState((p) => ({ ...p, input_base64: decode64(p.input_base64) })),
     clearBase64: () => setState((p) => ({ ...p, input_base64: "" })),

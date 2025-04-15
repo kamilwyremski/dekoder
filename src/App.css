@@ -1,7 +1,7 @@
 #root {
   background-color: grey;
 }
-#root .container {
+.container {
   background-color: white;
   padding-top: 30px;
   padding-bottom: 30px;
